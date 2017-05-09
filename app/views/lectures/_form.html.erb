@@ -10,7 +10,11 @@
       </ul>
     </div>
   <% end %>
-
+<div class="well">
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
   <div class="field">
     <%= f.label :content %>
     <%= f.text_field :content %>
@@ -18,7 +22,7 @@
 
   <div class="field">
     <%= f.label :attachment %>
-    <%= f.text_field :attachment %>
+   <%= f.file_field :attachment %>
   </div>
 
   <div class="field">
@@ -30,3 +34,4 @@
     <%= f.submit %>
   </div>
 <% end %>
+</div>

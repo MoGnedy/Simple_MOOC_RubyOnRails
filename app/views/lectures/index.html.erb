@@ -1,8 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Lectures</h1>
-
-<table>
+<%= link_to "New Resume", new_lecture_path, class: "btn btn-primary" %>
+<br>
+<br>
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th>Title</th>
@@ -18,11 +20,12 @@
       <tr>
         <td><%= lecture.title %></td>
         <td><%= lecture.content %></td>
-        <td><%= lecture.attachment %></td>
+        <!-- <td><%= lecture.attachment %></td> -->
+        <td><%= link_to "Download Attachment", lecture.attachment_url %></td>
         <td><%= lecture.course.title if lecture.course  %></td>
-        <td><%= link_to 'Show', lecture %></td>
-        <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
-        <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Show', lecture, class: "btn btn-success"%></td>
+        <td><%= button_to 'Edit', edit_lecture_path(lecture) ,class: "btn btn-primary" %></td>
+        <td><%= button_to 'Delete', lecture, method: :delete,class: "btn btn-danger", data: { confirm: "Are you sure that you wish to delete #{lecture.title}?" } %></td>
       </tr>
     <% end %>
   </tbody>
