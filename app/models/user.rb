@@ -8,4 +8,15 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
   cattr_accessor :current_user
 
+  def admin?
+  self.role.name == "Admin"
+  end
+
+  def instructor?
+  self.role.name == "Instructor"
+  end
+
+  def student?
+  self.role.name == "Student"
+  end
 end

@@ -1,5 +1,7 @@
 class LecturesController < InheritedResources::Base
-before_filter :authenticate_user!
+# before_filter :authenticate_user!
+before_action :authenticate_user!
+load_and_authorize_resource
   private
 
     def lecture_params

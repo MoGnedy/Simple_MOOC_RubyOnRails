@@ -9,5 +9,10 @@
   <%= @role.description %>
 </p>
 
+<p>
+  <strong>Assosciated users:</strong>
+  <%= @role.users.map(&:name).join(", ") %>
+</p>
+
 <%= link_to 'Edit', edit_role_path(@role) %> |
 <%= link_to 'Back', roles_path %>
