@@ -7,6 +7,8 @@ class Ability
       can :manage, :all
     elsif user.instructor?
       can :read, [Course, Lecture]
+      can :upvote, Lecture
+      can :downvote, Lecture
       can :manage, Course do |course|
         course.try(:user) == user
       end
@@ -18,6 +20,8 @@ class Ability
     end
     elsif user.student?
       can :read, [Course, Lecture]
+      can :upvote, Lecture
+      can :downvote, Lecture
     else
       can :read, :Course
     end
