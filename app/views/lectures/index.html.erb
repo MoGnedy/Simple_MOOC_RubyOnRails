@@ -19,13 +19,13 @@
     <% @lectures.each do |lecture| %>
       <tr>
         <td><%= lecture.title %></td>
-        <td><%= lecture.content %></td>
+        <td><%= lecture.content.html_safe %></td>
         <!-- <td><%= lecture.attachment %></td> -->
-        <td><%= link_to "Download Attachment", lecture.attachment_url %></td>
+        <td><%= link_to "Download Attachment", lecture.attachment_url if lecture.attachment_url %></td>
         <td><%= lecture.course.title if lecture.course  %></td>
-        <td><%= button_to 'Show', lecture, class: "btn btn-success"%></td>
-        <td><%= button_to 'Edit', edit_lecture_path(lecture) ,class: "btn btn-primary" %></td>
-        <td><%= button_to 'Delete', lecture, method: :delete,class: "btn btn-danger", data: { confirm: "Are you sure that you wish to delete #{lecture.title}?" } %></td>
+        <td><%= link_to 'Show', lecture, class: "btn btn-success"%></td>
+        <td><%= link_to 'Edit', edit_lecture_path(lecture) ,class: "btn btn-primary" %></td>
+        <td><%= link_to 'Delete', lecture, method: :delete,class: "btn btn-danger", data: { confirm: "Are you sure that you wish to delete #{lecture.title}?" } %></td>
       </tr>
     <% end %>
   </tbody>

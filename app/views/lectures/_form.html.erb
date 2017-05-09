@@ -17,13 +17,30 @@
   </div>
   <div class="field">
     <%= f.label :content %>
-    <%= f.text_field :content %>
+    <!-- <%= f.text_field :content %> -->
+    <div>
+      <%= f.text_area :content, :class => 'ckeditor' %>
+    </div>
   </div>
 
-  <div class="field">
+  <!-- <div class="field">
     <%= f.label :attachment %>
    <%= f.file_field :attachment %>
-  </div>
+  </div> -->
+
+  <div class="field">
+   <%= f.label :attachment %><br>
+   <%= f.file_field :attachment %>
+   <% if f.object.attachment? %>
+<%= link_to "Download Attachment", f.object.attachment_url %>
+     <%= f.label :remove_attachment %>
+     <%= f.check_box :remove_attachment %>
+   <% end %>
+ </div>
+
+
+
+
 
   <div class="field">
     <!-- <%= f.label :course_id %> -->
