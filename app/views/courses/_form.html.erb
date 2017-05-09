@@ -16,10 +16,16 @@
     <%= f.text_field :title %>
   </div>
 
+  <!-- <% if user_signed_in? %>
   <div class="field">
     <%= f.label :user_id %>
-    <%= f.text_field :user_id %>
+    <%= f.text_field :user_id, required: true, class: 'form-control', value:current_user.id  %>
   </div>
+  <% else %>
+  <%= f.label :user_id %>
+  <%= f.text_field :user_id %>
+  <% end %> -->
+
 
   <div class="actions">
     <%= f.submit %>

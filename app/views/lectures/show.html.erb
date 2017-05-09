@@ -1,4 +1,9 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
+
+<p>
+  <strong>Title:</strong>
+  <%= @lecture.title %>
+</p>
 
 <p>
   <strong>Content:</strong>
@@ -12,7 +17,7 @@
 
 <p>
   <strong>Course:</strong>
-  <%= @lecture.course %>
+  <%= @lecture.course.title %>
 </p>
 
 <%= link_to 'Edit', edit_lecture_path(@lecture) %> |

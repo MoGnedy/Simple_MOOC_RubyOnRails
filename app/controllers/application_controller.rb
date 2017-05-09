@@ -7,4 +7,11 @@ class ApplicationController < ActionController::Base
  def configure_permitted_parameters
    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :password, :image, :dob, :gender])
  end
+
+ before_filter :set_current_user
+
+def set_current_user
+  User.current_user = current_user
+end
+
 end

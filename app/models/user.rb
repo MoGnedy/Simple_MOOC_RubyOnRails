@@ -6,4 +6,6 @@ class User < ApplicationRecord
   belongs_to :role
   has_many :courses
   mount_uploader :image, ImageUploader
+  cattr_accessor :current_user
+
 end

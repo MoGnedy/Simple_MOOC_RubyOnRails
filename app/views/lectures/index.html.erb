@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Title</th>
       <th>Content</th>
       <th>Attachment</th>
       <th>Course</th>
@@ -15,9 +16,10 @@
   <tbody>
     <% @lectures.each do |lecture| %>
       <tr>
+        <td><%= lecture.title %></td>
         <td><%= lecture.content %></td>
         <td><%= lecture.attachment %></td>
-        <td><%= lecture.course %></td>
+        <td><%= lecture.course.name %></td>
         <td><%= link_to 'Show', lecture %></td>
         <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
         <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
