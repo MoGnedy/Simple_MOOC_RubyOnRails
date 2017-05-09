@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :gender
       t.date :dob
       t.string :image
-      t.belongs_to :role, foreign_key: true
+      t.belongs_to :role, foreign_key: true, default: 'Student'
       t.timestamps
     end
   end

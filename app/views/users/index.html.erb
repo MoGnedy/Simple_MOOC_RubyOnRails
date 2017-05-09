@@ -7,6 +7,8 @@
       <th>Gender</th>
       <th>Dob</th>
       <th>Role</th>
+      <td>Email</td>
+      <td>Image</td>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,6 +20,8 @@
         <td><%= user.gender %></td>
         <td><%= user.dob %></td>
         <td><%= user.role.name %></td>
+        <td><%= user.email %></td>
+        <td>  <%= image_tag user.image.thumb.url if !user.image.blank? %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>

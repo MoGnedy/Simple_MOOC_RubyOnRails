@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :role
   has_many :courses
+  mount_uploader :image, ImageUploader
 end

@@ -27,8 +27,16 @@
     <%= f.label :dob %>
     <%= f.date_select :dob %>
   </div>
-
-  <%= collection_select(:user, :role_id, Role.all, :id, :name, {prompt: true}) %>
+  <div class="field">
+   <%= f.label :image %><br>
+   <%= f.file_field :image %>
+   <% if f.object.image? %>
+     <%= image_tag f.object.image.thumb.url %>
+     <%= f.label :remove_image %>
+     <%= f.check_box :remove_image %>
+   <% end %>
+ </div>
+  <!-- <%= collection_select(:user, :role_id, Role.all, :id, :name, {prompt: true}) %> -->
 
 
   <div class="actions">

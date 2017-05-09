@@ -12,6 +12,14 @@
   <strong>Dob:</strong>
   <%= @user.dob %>
 </p>
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @user.image.thumb.url if !@user.image.blank? %>
+</p>
 
 <p>
   <strong>Role:</strong>
