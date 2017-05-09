@@ -1,3 +1,3 @@
 class Comment < ApplicationRecord
-  belongs_to :lecture
+  belongs_to :lecture, :polymorphic => true
 end

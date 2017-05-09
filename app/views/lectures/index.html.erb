@@ -19,7 +19,7 @@
         <td><%= lecture.title %></td>
         <td><%= lecture.content %></td>
         <td><%= lecture.attachment %></td>
-        <td><%= lecture.course.name %></td>
+        <td><%= lecture.course.title if lecture.course  %></td>
         <td><%= link_to 'Show', lecture %></td>
         <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
         <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
