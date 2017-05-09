@@ -4,6 +4,8 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+#Ignore images
+/public/uploads
 # Ignore bundler config.
 /.bundle
 
@@ -42,7 +44,6 @@ config/initializers/secret_token.rb
 .env
 
 ## Environment normalization:
-/.bundle
 /vendor/bundle
 
 # these should all be checked in to normalize the environment:
