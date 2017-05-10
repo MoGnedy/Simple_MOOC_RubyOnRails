@@ -1,13 +1,43 @@
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= @course.title %></h3>
+  </div>
+  <div class="panel-body">
+    <h4>  Submitted <%= time_ago_in_words(@course.created_at) %>
+      by <%= @course.user.name %> </h4>
+    <p>
+      <p>
+        <% if @course.user == current_user %>
+        <%= link_to 'New Lecture', newlecture_path(@course), method: :post,class: "btn btn-primary" %>
+        <%= link_to 'Edit', edit_course_path(@course),class: "btn btn-info" %>
+        <%= link_to 'Destroy', @course, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger" %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @course.title %>
-</p>
+        <% end %>
 
-<p>
-  <strong>User:</strong>
-  <%= @course.user.name %>
-</p>
-<%= link_to 'New Lecture', newlecture_path(@course), method: :post %>
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+      </p>
+      <% if !@lectures.empty? %>
+      <br>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">Lectures</div>
+        <div class="panel-body">
+          <% @lectures.each do |lecture| %>
+          <div class="well well-lg">
+
+
+            <h3><%= link_to lecture.title , lecture %></h3>
+      <p>
+            <h5>  Submitted <%= time_ago_in_words(lecture.created_at) %>
+              by <%= lecture.user.name %> </h5></p>
+          </div>
+          <hr>
+          <% end %>
+
+        </div>
+      </div>
+      <% else %>
+      <%= render('shared/no_resource', resources: 'Lectures') %>
+      <% end %>
+  </div>
+</div>
+<%= link_to 'Back', courses_path, class: "btn btn-block btn-default" %>

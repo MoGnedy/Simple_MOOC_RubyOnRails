@@ -1,30 +1,19 @@
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+<br><br><br><br>
+<div id="user-<%= @user.id %>" class="row">
+  <div class="col-lg-6">
+    <%= render 'shared/user_info' %>
+  </div>
+  <!-- <div class="col-lg-6"></div> -->
 
-<p>
-  <strong>Gender:</strong>
-  <%= @user.gender %>
-</p>
-
-<p>
-  <strong>Dob:</strong>
-  <%= @user.dob %>
-</p>
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @user.image.thumb.url if !@user.image.blank? %>
-</p>
-
-<p>
-  <strong>Role:</strong>
-  <%= @user.role.name %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <div class="col-lg-6">
+    <% if is_current_user?(@user) %>
+      <div class="well">
+        <ul class="nav nav-pills nav-stacked">
+          <li><%= link_to 'Edit Profile', edit_user_path(@user) %></li>
+          <li><%= link_to 'Change password', edit_user_registration_path %></li>
+          <li><%= link_to 'Deactivate', cancel_user_registration_path(@user) %></li>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</div>

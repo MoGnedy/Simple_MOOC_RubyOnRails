@@ -1,17 +1,20 @@
 <div id="user-info" class="well">
   <div class="text-center">
     <%= render 'shared/avatar', user: @user %><br>
-    <h5><%= link_to @user.name, @user %></h5>
+    <h5><%= @user.name %></h5>
+    <h5><%=  @user.email %></h5>
   </div>
   <h5>
     <%= fa_icon 'shield' %>
-    <%= pluralize(@user.courses_count, 'course') %>
+    <!-- <%= pluralize(@user.courses.all, 'course') %> -->
   </h5>
   <% if @user.dob.present? %>
+<div class="text-center">
     <h5>
       <%= fa_icon @user.gender %>
       <%= "#{pluralize(age(@user.dob), 'year')} old" %>
     </h5>
+    </div>
   <% end %>
 
   <br>
