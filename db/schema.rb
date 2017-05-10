@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 20170510075130) do
   end
 
   add_foreign_key "comments", "users", on_delete: :cascade
-  add_foreign_key "courses", "users"
+  add_foreign_key "courses", "users", on_delete: :cascade
   add_foreign_key "lectures", "courses", on_delete: :cascade
   add_foreign_key "lectures", "users", on_delete: :cascade
   add_foreign_key "users", "roles"

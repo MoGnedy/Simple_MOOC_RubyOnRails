@@ -9,9 +9,14 @@
   <%= @lecture.content.html_safe %>
   </div>
   <div class="well well-lg">
+    <% if @lecture.attachment? %>
     <strong>Attachment:</strong>
     <%= link_to "Download Attachment", @lecture.attachment_url %>
+    <% else %>
+    <p>No attachment file available</p>
+    <% end %>
 </div>
+<% if @lecture.user == current_user || current_user && current_user.admin? %>
 <div class="row">
 <div class="col-md-6">
   <%= link_to 'Edit', edit_lecture_path(@lecture), class: "btn btn-block btn-info" %>
@@ -23,6 +28,7 @@
 </div>
 </div>
 </div>
+<% end %>
 <%= link_to 'Back', lectures_path, class: "btn btn-block btn-default" %>
 <br>
 

@@ -18,6 +18,11 @@
     <%= f.label :dob %>
     <%= f.date_select :dob, end_year:1917, start_year:2010 %>
   </div>
+
+  <!-- <div class="field">
+    <%= f.label :role_id %>
+  <%= f.select :role_id, options_for_select([["Student", 1],["Instructor", 2]]), :class => 'genForm_dropBox' %>
+</div> -->
   <div class="field">
       <%= f.label :image %><br>
       <%= f.file_field :image %>
