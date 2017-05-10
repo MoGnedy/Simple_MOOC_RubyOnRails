@@ -15,7 +15,6 @@ class Ability
         can :manage, Lecture do |lecture|
         # lecture if (Course.find(lecture.course_id).user_id) == user.id
         lecture.try(:user) == user
-
       end
       can :manage, Comment do |comment|
       comment.try(:user) == user

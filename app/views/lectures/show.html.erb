@@ -19,6 +19,35 @@
   <strong>Course:</strong>
   <%= @lecture.course.title if @lecture.course %>
 </p>
+<div class="row">
+    <div class="col-lg-6 col-lg-offset-3 well">
+      <h4>Comments</h4>
+      <hr>
+      <%= render 'comments/form', commentable: @lecture %>
+      <br>
+
+      <div class="comments">
+        <% @comments.each do |comment| %>
+
+      <p>    <tr>
+            <td><%= comment.comment %></td>
+            <p><td>
+              Submitted <%= time_ago_in_words(comment.created_at) %>
+              by <%= comment.user.name %>
+            </td></p>
+        </tr></p>
+        <% end %>
+        <!-- <%= render(@comments)  || render('shared/no_resource', resources: 'Comments') %> -->
+
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
 
 <%= link_to 'Edit', edit_lecture_path(@lecture) %> |
 <%= link_to 'Back', lectures_path %>

@@ -4,6 +4,8 @@ class Lecture < ApplicationRecord
   has_many :comments
   after_initialize :init
   acts_as_votable
+  acts_as_commentable
+  include Shared::Callbacks
   mount_uploader :attachment, AttachmentUploader # Tells rails to use this uploader for this model.
   validates :title, presence: true # Make sure the owner's name is present.
 
