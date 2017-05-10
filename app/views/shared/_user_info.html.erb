@@ -3,6 +3,7 @@
     <%= render 'shared/avatar', user: @user %><br>
     <h5><%= @user.name %></h5>
     <h5><%=  @user.email %></h5>
+    <h5><%=  @user.role.name %></h5>
   </div>
   <h5>
     <%= fa_icon 'shield' %>

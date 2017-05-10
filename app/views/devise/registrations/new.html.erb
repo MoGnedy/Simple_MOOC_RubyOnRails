@@ -16,7 +16,7 @@
 
   <div class="field">
     <%= f.label :dob %>
-    <%= f.date_select :dob %>
+    <%= f.date_select :dob, end_year:1917, start_year:2010 %>
   </div>
   <div class="field">
       <%= f.label :image %><br>

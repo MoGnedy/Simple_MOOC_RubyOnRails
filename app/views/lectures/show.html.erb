@@ -1,54 +1,68 @@
 <!-- <p id="notice"><%= notice %></p> -->
-
-<p>
-  <strong>Title:</strong>
-  <%= @lecture.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @lecture.content %>
-</p>
-
-<p>
-  <strong>Attachment:</strong>
-  <%= link_to "Download Attachment", @lecture.attachment_url %>
-</p>
-
-<p>
-  <strong>Course:</strong>
-  <%= @lecture.course.title if @lecture.course %>
-</p>
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title"><strong>Lecture Title : <%= @lecture.title %></strong></h3>
+    <h4>Course Name:
+    <%= @lecture.course.title if @lecture.course %> </h4>
+  </div>
+  <div class="panel-body">
+  <%= @lecture.content.html_safe %>
+  </div>
+  <div class="well well-lg">
+    <strong>Attachment:</strong>
+    <%= link_to "Download Attachment", @lecture.attachment_url %>
+</div>
 <div class="row">
-    <div class="col-lg-6 col-lg-offset-3 well">
-      <h4>Comments</h4>
+<div class="col-md-6">
+  <%= link_to 'Edit', edit_lecture_path(@lecture), class: "btn btn-block btn-info" %>
+
+</div>
+<div class="col-md-6">
+  <%= link_to 'Destroy', @lecture, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-block btn-danger" %>
+
+</div>
+</div>
+</div>
+<%= link_to 'Back', lectures_path, class: "btn btn-block btn-default" %>
+<br>
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col-lg-6 col-lg-offset-3 well">
+    <h4>Comments</h4>
+    <hr>
+    <%= render 'comments/form', commentable: @lecture %>
+    <br>
+    <% if !@comments.empty? %>
+    <div class="comments">
+      <% @comments.each do |comment| %>
+
+      <p>
+        <tr>
+          <td><%= comment.comment %></td>
+          <p>
+            <td>
+              Submitted
+              <%= time_ago_in_words(comment.created_at) %>
+              by
+              <%= comment.user.name %>
+            </td>
+          </p>
+        </tr>
+      </p>
       <hr>
-      <%= render 'comments/form', commentable: @lecture %>
-      <br>
-
-      <div class="comments">
-        <% @comments.each do |comment| %>
-
-      <p>    <tr>
-            <td><%= comment.comment %></td>
-            <p><td>
-              Submitted <%= time_ago_in_words(comment.created_at) %>
-              by <%= comment.user.name %>
-            </td></p>
-        </tr></p>
-        <hr>
-        <% end %>
-        <!-- <%= render(@comments)  || render('shared/no_resource', resources: 'Comments') %> -->
-
-      </div>
+      <% end %>
+      <!-- <%= render(@comments)  || render('shared/no_resource', resources: 'Comments') %> -->
 
     </div>
+  <% else %>
+    <%= render('shared/no_resource', resources: 'Comments') %>
+    <% end %>
+
   </div>
-
-
-
-
-
-
-<%= link_to 'Edit', edit_lecture_path(@lecture) %> |
-<%= link_to 'Back', lectures_path %>
+</div>

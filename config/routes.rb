@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "courses#index"
-  resources :comments
+  resources :comments, except: :index
   post '/lectures/new/:course_id', to: 'lectures#new', as: 'newlecture'
   resources :lectures do
   member do
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     put "dislike", to: "lectures#downvote"
   end
 end
-  resources :lectures
+  resources :lectures, except: :index
   resources :courses
   resources :roles
   resources :users, only: [:index, :show, :edit, :update, :destroy]
