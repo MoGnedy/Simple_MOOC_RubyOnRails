@@ -13,6 +13,7 @@ def create
 end
 
 def destroy
+  @user = current_user
   @comment = current_user.comments.find(params[:id])
   @comment_id = params[:id]
   @comment.destroy

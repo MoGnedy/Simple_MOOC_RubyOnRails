@@ -11,5 +11,6 @@ ActiveAdmin.register Lecture do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+permit_params :title, :user_id, :course_id, :content, :attachment
 
 end
