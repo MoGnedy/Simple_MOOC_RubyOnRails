@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   devise_for :users
   root to: "courses#index"
   resources :comments, except: :index
@@ -9,7 +11,7 @@ Rails.application.routes.draw do
     put "dislike", to: "lectures#downvote"
   end
 end
-  resources :lectures, except: :index
+  resources :lectures, only: [:show, :edit, :update, :destroy]
   resources :courses
   resources :roles
   resources :users, only: [:index, :show, :edit, :update, :destroy]

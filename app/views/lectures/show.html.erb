@@ -16,6 +16,25 @@
     <p>No attachment file available</p>
     <% end %>
 </div>
+
+<div class="row">
+<div class="col-md-6">
+  <%= link_to like_lecture_path(@lecture), method: :put,class: "btn btn-block btn-success" do %>
+  Like
+  <%= @lecture.get_upvotes.size %>
+<% end %>
+</div>
+<div class="col-md-6">
+<%= link_to dislike_lecture_path(@lecture), method: :put,class: "btn btn-block btn-danger" do %>
+  Spam
+  <%= @lecture.get_downvotes.size %>
+<% end %>
+</div>
+</div>
+
+
+
+
 <% if @lecture.user == current_user || current_user && current_user.admin? %>
 <div class="row">
 <div class="col-md-6">

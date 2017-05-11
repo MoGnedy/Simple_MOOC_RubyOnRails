@@ -9,3 +9,4 @@
 # r1 = Role.create({name: "Student", description: "Can read items"})
 # r2 = Role.create({name: "Instructor", description: "Can read and create Courses. Can update and destroy own Courses"})
 # r3 = Role.create({name: "Admin", description: "Can perform any CRUD operation on any resource"})
+# AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
