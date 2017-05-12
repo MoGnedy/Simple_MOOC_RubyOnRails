@@ -27,5 +27,4 @@ end
     def lecture_params
       params.require(:lecture).permit(:title, :content, :attachment, :course_id, :user_id, :remove_attachment)
     end
-    #  @default_lecture = Lecture.find(lecture_params[:course_id])
 end
