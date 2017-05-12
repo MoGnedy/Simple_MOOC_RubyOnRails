@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+
+<% if current_user.admin? %>
+<!-- <p id="notice"><%= notice %></p> -->
 
 <h1>Lectures</h1>
 <%= link_to "New lecture", new_lecture_path, class: "btn btn-primary" %>
@@ -52,3 +54,8 @@
 <br>
 
 <%= link_to 'New Lecture', new_lecture_path %>
+<% else %>
+<script type="text/javascript">
+    window.location.href="/courses"
+  </script>
+<% end  %>

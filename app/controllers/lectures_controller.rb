@@ -1,5 +1,4 @@
 class LecturesController < InheritedResources::Base
-# before_filter :authenticate_user!
 before_action :authenticate_user!
 before_action :set_lecture, only: [:show]
 before_action :get_all_comments, only: [:show]

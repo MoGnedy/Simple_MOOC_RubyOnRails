@@ -22,15 +22,16 @@ class User < ApplicationRecord
       with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i,
       message: "Example : email@example.com"
       }
+      
   def admin?
-  self.role.name == "Admin"
+    self.role.name == "Admin"
   end
 
   def instructor?
-  self.role.name == "Instructor"
+    self.role.name == "Instructor"
   end
 
   def student?
-  self.role.name == "Student"
+    self.role.name == "Student"
   end
 end

@@ -1,5 +1,4 @@
 class CommentsController < InheritedResources::Base
-# before_filter :authenticate_user!
 before_action :authenticate_user!
 before_action :find_commentable, only: :create
 respond_to :js
@@ -10,11 +9,12 @@ def create
     comment.user = current_user
   end
   @comment.save
+
 end
 
 def destroy
-  @user = current_user
-  @comment = current_user.comments.find(params[:id])
+  @user = Comment.find(params[:id]).user;
+  @comment = @user.comments.find(params[:id])
   @comment_id = params[:id]
   @comment.destroy
 end

@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :password, :image, :dob, :gender])
  end
 
- # before_filter :set_current_user
  before_action :set_current_user
 
 

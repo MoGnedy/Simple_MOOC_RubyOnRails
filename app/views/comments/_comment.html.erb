@@ -1,20 +1,25 @@
 <div id="comment-<%= comment.id %>">
-  <div class="info">
-    <%= render 'shared/avatar', user: comment.user %>
+<div class="content">
+  <div class="row">
     <h4 class="name"><%= link_to comment.user.name, user_path(comment.user) %></h4>
   </div>
-  <div class="content">
-    <div class="row">
-      <span class="text"><%= comment %></span>
-    </div>
-    <div class="pull-right">
-      <% if belongs_to_user?(comment) %>
-        <%= link_to comment_path(comment), method: :delete, class: 'btn btn-danger btn-sm', remote: true do %>
-          <% fa_icon 'trash' %>
-        <% end %>
-      <% end %>
+  <div class="row">
+  <div class="col-md-3">
+    <div class="info">
+      <%= render 'shared/avatar', user: comment.user %>
     </div>
   </div>
-  <br>
-  <hr>
+  <div class="col-md-6">
+    <span class="text"><%= comment.comment %> <br> Submitted
+    <%= time_ago_in_words(comment.created_at) %></span>
+  </div>
+  <div class="pull-right">
+    <% if belongs_to_user?(comment) || current_user && current_user.admin? %>
+      <%= link_to "Delete",comment_path(comment), method: :delete, remote: true , class: 'btn btn-danger btn-sm' %>
+
+    <% end %>
+    <br>
+    <hr>
+  </div>
+  </div>
 </div>
