@@ -5,8 +5,8 @@ class Course < ApplicationRecord
   validates :title, length: { minimum: 6 }
   validates :title,
   format:{
-    with: /\A[a-zA-Z]+(?: [a-zA-Z]+)\z/,
-    message: "Only allows letters and one white space"
+    with: /\A[a-zA-Z]+(?:\s?[a-zA-Z]+)\z/,
+    message: "Only allows letters and one white space optional"
     }
   after_initialize :init
 

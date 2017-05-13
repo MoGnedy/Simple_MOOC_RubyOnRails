@@ -7,12 +7,12 @@
       Submitted
       <%= time_ago_in_words(@course.created_at) %>
       by
-      <%= @course.user.name %>
+      <%= link_to @course.user.name,@course.user %>
     </h4>
     <p>
       <p>
         <% if @course.user == current_user || current_user && current_user.admin? %>
-        <%= link_to 'New Lecture', newlecture_path(@course), method: :post,class: "btn btn-primary" %>
+        <%= link_to 'New Lecture', course_new_lecture_path(@course), method: :post,class: "btn btn-primary" %>
         <%= link_to 'Edit', edit_course_path(@course),class: "btn btn-info" %>
         <%= link_to 'Destroy', @course, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger" %>
 
@@ -34,7 +34,7 @@
                 Submitted
                 <%= time_ago_in_words(lecture.created_at) %>
                 by
-                <%= lecture.user.name %>
+                <%=link_to lecture.user.name, lecture.user %>
               </h5>
             </p>
           </div>

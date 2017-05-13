@@ -18,6 +18,13 @@
     </div>
   <% end %>
 
+  <% if current_user != @user %>
+  <div class="text-center">
+  <%= button_to 'Courses', my_courses_path(@user), method: :get %>
+  <%= button_to 'Lectures', my_lectures_path(@user), method: :get %>
+</div>
+    <% end %>
+
   <br>
 
 </div>

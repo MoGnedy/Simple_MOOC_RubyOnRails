@@ -1,0 +1,44 @@
+<% if !@courses.empty? %>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= @courses[0].user.name %>'s Courses</h3>
+  </div>
+  <div class="panel-body">
+    <% @courses.each do |course| %>
+
+    <div class="col-sm-6 col-md-3">
+
+      <div class="caption">
+        <h3><%= link_to course.title, course %></h3>
+        <!-- <p>User : <%=  course.user.name %></p> -->
+        <p>
+          Submitted
+          <%= time_ago_in_words(course.created_at) %>
+          by
+          <%= course.user.name %>
+        </p>
+        <p>
+
+          <% if course.user == current_user || current_user && current_user.admin? %>
+          <%= link_to 'Edit', edit_course_path(course),class: "btn btn-primary" %>
+          <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger" %>
+          <% end %>
+
+        </p>
+
+      </div>
+    </div>
+
+    <% end %>
+
+    <br>
+
+  </div>
+</div>
+<% else %>
+<%= render('shared/no_resource', resources: 'Courses') %>
+<% end %>
+
+<% if can? :create, Course %>
+<%= link_to 'New Course', new_course_path,class: "btn btn-block btn-primary" %>
+<% end %>

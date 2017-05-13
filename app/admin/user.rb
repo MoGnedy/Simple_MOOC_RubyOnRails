@@ -36,9 +36,9 @@ ActiveAdmin.register User do
       f.input :role, :as => :radio, :collection => Role.pluck(:name, :id), :required => true
       f.input :dob, :as => :datepicker, start_date: Date.parse("1900-1-1"), end_date: Date.today, :required => true
       f.input :gender, :as => :radio,:collection => [['Male','Male'],['Female','Female']], :required => true
-      f.input :image, :as => :file, :required => true, :hint => f.object.image.present? ? image_tag(f.object.image.url(:thumb)) : content_tag(:span, "no image yet")
-      # f.input :password, :required => true
-      # f.input :password_confirmation, :requried => true
+      f.input :image, :as => :file, :required => true, :hint => f.object.image.present? ? image_tag(f.object.image.thumb) : content_tag(:span, "no image yet")
+      f.input :password, :required => true
+      f.input :password_confirmation, :requried => true
     end
     f.actions
   end
@@ -46,7 +46,7 @@ ActiveAdmin.register User do
   show do |ad|
     attributes_table do
       row :image do
-        image_tag(ad.image.url(:thumb))
+        image_tag(ad.image.thumb)
       end
 
       row :name

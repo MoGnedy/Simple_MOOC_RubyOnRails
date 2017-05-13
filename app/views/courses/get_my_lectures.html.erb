@@ -1,0 +1,63 @@
+<% if !@lectures.empty? %>
+<!-- <p id="notice"><%= notice %></p> -->
+
+<h1><%= @lectures[0].user.name %>'s Lectures</h1>
+<br>
+<br>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Attachment</th>
+      <th>Course</th>
+      <th>Created At</th>
+      <th>likes</th>
+      <th>spam</th>
+      <th>Options</th>
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lectures.each do |lecture| %>
+      <tr>
+        <td><%= lecture.title %></td>
+        <td><%= lecture.content.html_safe %></td>
+        <!-- <td><%= lecture.attachment %></td> -->
+        <td><%= link_to "Download Attachment", lecture.attachment_url if lecture.attachment_url %></td>
+        <td><%= lecture.course.title if lecture.course  %></td>
+
+    <td>
+      Submitted <%= time_ago_in_words(lecture.created_at) %>
+      by <%= lecture.user.name %>
+    </td>
+
+
+      <td>  <%= link_to like_lecture_path(lecture), method: :put do %>
+        Like
+        <%= lecture.get_upvotes.size %>
+      <% end %>
+</td>
+<td>
+      <%= link_to dislike_lecture_path(lecture), method: :put do %>
+        Spam
+        <%= lecture.get_downvotes.size %>
+      <% end %>
+</td>
+        <td><%= link_to 'Show', lecture, class: "btn btn-success"%></td>
+        <% if lecture.user == current_user %>
+        <td><%= link_to 'Edit', edit_lecture_path(lecture) ,class: "btn btn-primary" %></td>
+        <td><%= link_to 'Delete', lecture, method: :delete,class: "btn btn-danger", data: { confirm: "Are you sure that you wish to delete #{lecture.title}?" } %></td>
+      <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% else %>
+<%= render('shared/no_resource', resources: 'Lectures') %>
+<% end  %>

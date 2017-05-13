@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "courses#index"
   resources :comments, except: :index
-  post '/lectures/new/:course_id', to: 'lectures#new', as: 'newlecture'
+  post '/lectures/new/:course_id', to: 'lectures#new', as: 'course_new_lecture'
+  get '/courses/user/:user', to: 'courses#get_my_courses', as: 'my_courses'
+  get '/lectures/user/:user', to: 'courses#get_my_lectures', as: 'my_lectures'
   resources :lectures do
   member do
     put "like", to: "lectures#upvote"

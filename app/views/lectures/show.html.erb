@@ -4,6 +4,11 @@
     <h3 class="panel-title"><strong>Lecture Title : <%= @lecture.title %></strong></h3>
     <h4>Course Name:
     <%= @lecture.course.title if @lecture.course %> </h4>
+    <h5>
+      Submitted
+      <%= time_ago_in_words(@lecture.created_at) %>
+      by <%= link_to @lecture.user.name, @lecture.user %> </h5>
+
   </div>
   <div class="panel-body">
   <%= @lecture.content.html_safe %>

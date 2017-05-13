@@ -41,7 +41,8 @@ class Ability
       can :manage, User do |usr|
         usr == user
       end
-
+      can :get_my_courses, Course
+      can :get_my_lectures, Course
 #guest
     else
       can :read, :Course

@@ -8,9 +8,14 @@
     <% if is_current_user?(@user) %>
       <div class="well">
         <ul class="nav nav-pills nav-stacked">
+          <% if current_user.instructor? || current_user.admin? %>
+          <li><%= link_to 'My Courses', my_courses_path(@user), method: :get %></li>
+          <li><%= link_to 'My Lectures', my_lectures_path(@user), method: :get %></li>
+
+            <% end %>
           <li><%= link_to 'Edit Profile', edit_user_path(@user) %></li>
           <li><%= link_to 'Change password', edit_user_registration_path %></li>
-          <li><%= link_to 'Deactivate', cancel_user_registration_path(@user) %></li>
+          <%= button_to 'Cancel my account', registration_path(@user), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger' %>
         </ul>
       </div>
     <% end %>
