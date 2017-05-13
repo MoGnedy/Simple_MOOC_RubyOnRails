@@ -37,8 +37,8 @@ ActiveAdmin.register User do
       f.input :dob, :as => :datepicker, start_date: Date.parse("1900-1-1"), end_date: Date.today, :required => true
       f.input :gender, :as => :radio,:collection => [['Male','Male'],['Female','Female']], :required => true
       f.input :image, :as => :file, :required => true, :hint => f.object.image.present? ? image_tag(f.object.image.thumb) : content_tag(:span, "no image yet")
-      f.input :password, :required => true
-      f.input :password_confirmation, :requried => true
+      # f.input :password, :required => true
+      # f.input :password_confirmation, :requried => true
     end
     f.actions
   end
