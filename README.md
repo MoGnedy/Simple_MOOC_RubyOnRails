@@ -10,17 +10,20 @@
 * Instructions
 
 > 1- clone the App
-#bugID git clone https://github.com/MoGnedy/Simple_MOOC_RubyOnRails.git
-
+````
+git clone https://github.com/MoGnedy/Simple_MOOC_RubyOnRails.git
+```
 > 2- Install dependencies
-#bugID bundle install
-
+```
+bundle install
+```
   
 > 3-Set some environment variables to make reset password function work correctly
-#bugID  export SENDMAIL_PASSWORD=XXXXXXX
-        export SENDMAIL_USERNAME=MoGnedy@gmail.com
-        export MAIL_HOST=localhost:3000
-
+```
+export SENDMAIL_PASSWORD=XXXXXXX
+export SENDMAIL_USERNAME=MoGnedy@gmail.com
+export MAIL_HOST=localhost:3000
+```
 
 
 * # Mohamed Gnedy #
