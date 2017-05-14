@@ -20,13 +20,26 @@ git clone https://github.com/MoGnedy/Simple_MOOC_RubyOnRails.git
 ```
 bundle install
 ```
-  
-> 3-Set some environment variables in ~/.bathrc file to make reset password function work correctly
+
+> 3- create database, migrate and seed database with users roles and admin user
+
+```
+rake db:create
+rake db:migrate
+rake db:seed
+```
+
+> 4-Set some environment variables in ~/.bathrc file to make reset password function work correctly
 
 ```
 export SENDMAIL_PASSWORD=XXXXXXX
-export SENDMAIL_USERNAME=MoGnedy@gmail.com
+export SENDMAIL_USERNAME=email@example.com
 export MAIL_HOST=localhost:3000
+```
+
+> Finally run the server and have fun
+```
+rails s
 ```
 
 
