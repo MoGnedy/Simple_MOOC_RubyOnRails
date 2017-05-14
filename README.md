@@ -11,7 +11,7 @@
 
 > 1- clone the App
 
-````
+```
 git clone https://github.com/MoGnedy/Simple_MOOC_RubyOnRails.git
 ```
 
@@ -21,7 +21,7 @@ git clone https://github.com/MoGnedy/Simple_MOOC_RubyOnRails.git
 bundle install
 ```
   
-> 3-Set some environment variables to make reset password function work correctly
+> 3-Set some environment variables in ~/.bathrc file to make reset password function work correctly
 
 ```
 export SENDMAIL_PASSWORD=XXXXXXX
