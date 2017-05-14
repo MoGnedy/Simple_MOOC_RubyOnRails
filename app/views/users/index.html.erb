@@ -1,4 +1,4 @@
-<% if current_user.admin? %>
+<% if user_signed_in? && current_user.admin? %>
 <h1>Users</h1>
 
 <table>
