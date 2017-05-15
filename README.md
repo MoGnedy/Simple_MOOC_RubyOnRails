@@ -42,5 +42,17 @@ export MAIL_HOST=localhost:3000
 rails s
 ```
 
+> Note
+
+```
+you may face a problem in production enviroment with sending emails
+`The Problem` : emails were sent from development, but not from production (where I was getting `Net::SMTPAuthenticationError`). This drove me to conclusion that the problem was not with my app's configuration, but with Google.
+
+`Reason`: Google was blocking access from unknown location (app in production)
+
+`Solution`: Go to [Google DisplayUnlockCaptcha](http://www.google.com/accounts/DisplayUnlockCaptcha) and click continue (this will grant access for 10 minutes for registering new apps). After this my app in production started sending emails ;)
+```
+
+
 
 * # Mohamed Gnedy #
