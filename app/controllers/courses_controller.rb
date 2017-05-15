@@ -7,7 +7,6 @@ class CoursesController < InheritedResources::Base
     @lectures = @course.lectures.all
   end
 
-
   def get_my_courses
       @user = User.find(params[:user])
       if user_signed_in? && current_user.admin?
@@ -27,6 +26,7 @@ class CoursesController < InheritedResources::Base
   end
 
   private
+  
     def set_course
       @course = Course.find(params[:id])
     end

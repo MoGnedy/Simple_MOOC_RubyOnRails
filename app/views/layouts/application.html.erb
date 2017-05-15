@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SimpleMooc2</title>
+    <title>SimpleMooc->Gnedy</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -12,8 +12,8 @@
 
   <body>
 
-<%= render 'shared/navbar' %>
-<br><br><br>
+    <%= render 'shared/navbar' %>
+    <br><br><br>
 
     <!-- <% if user_signed_in? %>
   Signed in as <%= current_user.email %>. Not you?
@@ -23,12 +23,12 @@
   <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
 <% end %> -->
 
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, id: "flash_#{name}" %>
-<% end %>
+    <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, id: "flash_#{name}" %>
+    <% end %>
 
-<div class="container" >
-    <%= yield %>
-  </div>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

@@ -8,8 +8,8 @@ def create
     comment.comment = params[:comment_text]
     comment.user = current_user
   end
-  @comment.save
 
+  @comment.save
 end
 
 def destroy
@@ -20,14 +20,12 @@ def destroy
 end
 
 private
-def find_commentable
-  @commentable_type = params[:commentable_type].classify
-  @commentable = @commentable_type.constantize.find(params[:commentable_id])
-end
+  def find_commentable
+    @commentable_type = params[:commentable_type].classify
+    @commentable = @commentable_type.constantize.find(params[:commentable_id])
+  end
 
-  private
-
-    def comment_params
-      params.require(:comment).permit(:comment, :user_id)
-    end
+  def comment_params
+    params.require(:comment).permit(:comment, :user_id)
+  end
 end

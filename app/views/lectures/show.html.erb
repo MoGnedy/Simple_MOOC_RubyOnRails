@@ -1,66 +1,63 @@
 <!-- <p id="notice"><%= notice %></p> -->
 <div class="panel panel-success">
   <div class="panel-heading">
-    <h3 class="panel-title"><strong>Lecture Title : <%= @lecture.title %></strong></h3>
+    <h3 class="panel-title">
+      <strong>Lecture Title :
+        <%= @lecture.title %></strong>
+    </h3>
     <h4>Course Name:
-    <%= @lecture.course.title if @lecture.course %> </h4>
+      <%= @lecture.course.title if @lecture.course %>
+    </h4>
     <h5>
       Submitted
       <%= time_ago_in_words(@lecture.created_at) %>
-      by <%= link_to @lecture.user.name, @lecture.user %> </h5>
+      by
+      <%= link_to @lecture.user.name, @lecture.user %>
+    </h5>
 
   </div>
   <div class="panel-body">
-  <%= @lecture.content.html_safe %>
+    <%= @lecture.content.html_safe %>
   </div>
   <div class="well well-lg">
     <% if @lecture.attachment? %>
     <strong>Attachment:</strong>
     <%= link_to "Download Attachment", @lecture.attachment_url %>
-    <% else %>
+  <% else %>
     <p>No attachment file available</p>
     <% end %>
-</div>
+  </div>
 
-<div class="row">
-<div class="col-md-6">
-  <%= link_to like_lecture_path(@lecture), method: :put,class: "btn btn-block btn-success" do %>
-  Like
-  <%= @lecture.get_upvotes.size %>
-<% end %>
-</div>
-<div class="col-md-6">
-<%= link_to dislike_lecture_path(@lecture), method: :put,class: "btn btn-block btn-danger" do %>
-  Spam
-  <%= @lecture.get_downvotes.size %>
-<% end %>
-</div>
-</div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= link_to like_lecture_path(@lecture), method: :put,class: "btn btn-block btn-success" do %>
+      Like
+      <%= @lecture.get_upvotes.size %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= link_to dislike_lecture_path(@lecture), method: :put,class: "btn btn-block btn-danger" do %>
+      Spam
+      <%= @lecture.get_downvotes.size %>
+      <% end %>
+    </div>
+  </div>
 
+  <% if @lecture.user == current_user || current_user && current_user.admin? %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= link_to 'Edit', edit_lecture_path(@lecture), class: "btn btn-block btn-info" %>
 
+    </div>
+    <div class="col-md-6">
+      <%= link_to 'Destroy', @lecture, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-block btn-danger" %>
 
-
-<% if @lecture.user == current_user || current_user && current_user.admin? %>
-<div class="row">
-<div class="col-md-6">
-  <%= link_to 'Edit', edit_lecture_path(@lecture), class: "btn btn-block btn-info" %>
-
-</div>
-<div class="col-md-6">
-  <%= link_to 'Destroy', @lecture, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-block btn-danger" %>
-
-</div>
-</div>
+    </div>
+  </div>
 </div>
 <% end %>
 <%= link_to 'Back', @lecture.course, class: "btn btn-block btn-default" %>
 <br>
-
-
-
-
-
-
 
 <div class="row">
   <div class="col-lg-6 col-lg-offset-3 well">
@@ -72,28 +69,30 @@
     <div class="comments">
       <% @comments.each do |comment| %>
       <div id="comment-<%= comment.id %>">
-      <div class="content">
-        <div class="row">
-          <h4 class="name"><%= link_to comment.user.name, user_path(comment.user) %></h4>
-        </div>
-        <div class="row">
-        <div class="col-md-3">
-          <div class="info">
-            <%= render 'shared/avatar', user: comment.user %>
+        <div class="content">
+          <div class="row">
+            <h4 class="name"><%= link_to comment.user.name, user_path(comment.user) %></h4>
           </div>
-        </div>
-        <div class="col-md-6">
-          <span class="text"><%= comment.comment %> <br> Submitted
-          <%= time_ago_in_words(comment.created_at) %></span>
-        </div>
-        <div class="pull-right">
-          <% if belongs_to_user?(comment) || current_user && current_user.admin? %>
-            <%= link_to "Delete",comment_path(comment), method: :delete, remote: true , class: 'btn btn-danger btn-sm' %>
+          <div class="row">
+            <div class="col-md-3">
+              <div class="info">
+                <%= render 'shared/avatar', user: comment.user %>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <span class="text"><%= comment.comment %>
+                <br>
+                Submitted
+                <%= time_ago_in_words(comment.created_at) %></span>
+            </div>
+            <div class="pull-right">
+              <% if belongs_to_user?(comment) || current_user && current_user.admin? %>
+              <%= link_to "Delete",comment_path(comment), method: :delete, remote: true , class: 'btn btn-danger btn-sm' %>
+            </div>
+            <% end %>
+            <br>
+            <hr>
           </div>
-          <% end %>
-          <br>
-          <hr>
-        </div>
         </div>
       </div>
       <% end %>

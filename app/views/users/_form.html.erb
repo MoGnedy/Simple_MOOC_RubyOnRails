@@ -1,15 +1,16 @@
 <%= form_for(user) do |f| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<% if user.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(user.errors.count, "error") %>
+    prohibited this user from being saved:</h2>
 
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <ul>
+    <% user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 <div class="form-horizontal">
   <div class="form-group">
     <%= f.label :name,class: 'col-lg-2 control-label' %>
@@ -19,8 +20,10 @@
   <div class="field">
     <%= f.label :gender %>
     <!-- <%= f.text_field :gender %> -->
-    <%= f.radio_button :gender, 'Male', :checked => true %> Male
-    <%= f.radio_button :gender, 'Female' %> Female
+    <%= f.radio_button :gender, 'Male', :checked => true %>
+    Male
+    <%= f.radio_button :gender, 'Female' %>
+    Female
   </div>
 
   <div class="field">
@@ -28,19 +31,18 @@
     <%= f.date_select :dob %>
   </div>
   <div class="field">
-   <%= f.label :image %><br>
-   <%= f.file_field :image %>
-   <% if f.object.image? %>
-     <%= image_tag f.object.image.thumb.url %>
-     <%= f.label :remove_image %>
-     <%= f.check_box :remove_image %>
-   <% end %>
- </div>
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+    <% if f.object.image? %>
+    <%= image_tag f.object.image.thumb.url %>
+    <%= f.label :remove_image %>
+    <%= f.check_box :remove_image %>
+    <% end %>
+  </div>
   <!-- <%= collection_select(:user, :role_id, Role.all, :id, :name, {prompt: true}) %> -->
-
 
   <div class="actions">
     <%= f.submit %>
   </div>
-  </div>
+</div>
 <% end %>

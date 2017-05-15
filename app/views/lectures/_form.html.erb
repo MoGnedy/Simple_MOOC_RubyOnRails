@@ -1,15 +1,16 @@
 <%= form_for(lecture) do |f| %>
-  <% if lecture.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(lecture.errors.count, "error") %> prohibited this lecture from being saved:</h2>
+<% if lecture.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(lecture.errors.count, "error") %>
+    prohibited this lecture from being saved:</h2>
 
-      <ul>
-      <% lecture.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <ul>
+    <% lecture.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 <div class="well">
   <div class="field">
     <%= f.label :title %>
@@ -29,18 +30,14 @@
   </div> -->
 
   <div class="field">
-   <%= f.label :attachment %><br>
-   <%= f.file_field :attachment %>
-   <% if f.object.attachment? %>
-<%= link_to "Download Attachment", f.object.attachment_url %>
-     <%= f.label :remove_attachment %>
-     <%= f.check_box :remove_attachment %>
-   <% end %>
- </div>
-
-
-
-
+    <%= f.label :attachment %><br>
+    <%= f.file_field :attachment %>
+    <% if f.object.attachment? %>
+    <%= link_to "Download Attachment", f.object.attachment_url %>
+    <%= f.label :remove_attachment %>
+    <%= f.check_box :remove_attachment %>
+    <% end %>
+  </div>
 
   <div class="field">
     <!-- <%= f.label :course_id %> -->
@@ -50,5 +47,5 @@
   <div class="actions">
     <%= f.submit %>
   </div>
-<% end %>
+  <% end %>
 </div>

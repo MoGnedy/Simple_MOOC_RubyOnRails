@@ -1,33 +1,38 @@
 <%= form_for(course) do |f| %>
-  <% if course.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
+<% if course.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(course.errors.count, "error") %>
+    prohibited this course from being saved:</h2>
 
-      <ul>
-      <% course.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <ul>
+    <% course.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<%= form_for(course) do |f| %>
+<% if course.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(course.errors.count, "error") %>
+    prohibited this course from being saved:</h2>
 
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
+  <ul>
+    <% course.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-  <!-- <% if user_signed_in? %>
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.text_field :user_id, required: true, class: 'form-control', value:current_user.id  %>
-  </div>
-  <% else %>
-  <%= f.label :user_id %>
-  <%= f.text_field :user_id %>
-  <% end %> -->
+<div class="field">
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+</div>
 
+<div class="actions">
+  <%= f.submit %>
+</div>
+<% end %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>

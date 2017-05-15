@@ -8,6 +8,7 @@ class Course < ApplicationRecord
     with: /\A[a-zA-Z]+(?:\s?[a-zA-Z]+)\z/,
     message: "Only allows letters and one white space optional"
     }
+    
   after_initialize :init
 
     def init

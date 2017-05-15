@@ -6,18 +6,19 @@ class ApplicationController < ActionController::Base
     flash[:error] = "Access denied!"
     redirect_to root_url
   end
- protected
+  
+  protected
 
- def configure_permitted_parameters
-   devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :password, :image, :dob, :gender])
- end
+   def configure_permitted_parameters
+     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :password, :image, :dob, :gender])
+   end
 
- before_action :set_current_user
+   before_action :set_current_user
 
 
-def set_current_user
-  User.current_user = current_user
-end
+  def set_current_user
+    User.current_user = current_user
+  end
 
 
 

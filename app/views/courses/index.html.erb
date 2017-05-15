@@ -15,11 +15,11 @@
           Submitted
           <%= time_ago_in_words(course.created_at) %>
           by
-          <%= course.user.name %>
+          <%=link_to course.user.name, course.user %>
         </p>
         <p>
 
-          <% if course.user == current_user || current_user && current_user.admin? %>
+          <% if user_signed_in? && course.user == current_user || current_user && current_user.admin? %>
           <%= link_to 'Edit', edit_course_path(course),class: "btn btn-primary" %>
           <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger" %>
           <% end %>

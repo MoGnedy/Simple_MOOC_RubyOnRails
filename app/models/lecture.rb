@@ -9,7 +9,6 @@ class Lecture < ApplicationRecord
   validates :title, presence: true
   validates :title, length: { minimum: 6 }
 
-
     def init
       self.user_id ||= User.current_user.id if User.current_user #will set the default value only if it's nil
     end
